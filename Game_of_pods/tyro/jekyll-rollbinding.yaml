@@ -1,0 +1,11 @@
+
+
+# kubectl create rolebinding developer-rolebinding --role=developer-role --user=drogo --namespace=development
+
+# kubectl config set-context developer --cluster=kubernetes --user=drogo
+
+# kubectl config use-context developer
+
+# kubectl create role developer-role --resource=pods,svc,pvc --verb='*' --namespace=development
+
+# kubectl config set-credentials drogo --client-certificate=/root/drogo.crt --client-key=/root/drogo.key
