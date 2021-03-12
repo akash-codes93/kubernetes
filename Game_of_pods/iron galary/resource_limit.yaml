@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: ResourceQuota
+metadata:
+  name: iron-gallery-limit
+spec:
+  hard:
+    limits.cpu: '50m'
+    limits.memory: '100Mi'
+  scopeSelector:
+      matchExpressions:
+      - operator : In
+        scopeName: PriorityClass
+        values: ["medium"]

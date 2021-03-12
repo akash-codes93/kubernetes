@@ -1,0 +1,15 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: iron-gallery-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/cors-allow-origin: 'http://iron-gallery-braavos.com:30099'
+spec:
+  rules:
+  - host: "iron-gallery-braavos.com"
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: iron-gallery-service
+          servicePort: 80
