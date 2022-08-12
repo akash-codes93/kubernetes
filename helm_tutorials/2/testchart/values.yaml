@@ -1,0 +1,5 @@
+costCode: CC8890
+projectCode: aazzssyp
+infra:
+  zone: a,b,c
+  region: us-e
