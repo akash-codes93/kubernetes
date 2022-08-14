@@ -1,10 +1,52 @@
+{{- define "mychart.systemlables" }}
+  labels:
+    drive: ssd1
+    machine: frontdrive1
+    rack: 4c1
+    vcard: 8g1
+{{- end }}
 apiVersion: v1
 kind: ConfigMap
 metadata:
   name: {{ .Release.Name }}-configmap
+  labels:  # global variables
+    helm.sh/chart: "{{ $.Chart.Name }}-{{ $.Chart.Version }}"
+    app.kubernetes.io/instance: "{{ $.Release.Name }}"
+    app.kubernetes.io/version: "{{ $.Chart.AppVersion }}"
+    app.kubernetes.io/managed-by: "{{ $.Release.Service }}"
+  {{- template "mychart.systemlables" .}}  # using template defined above  # also present in helper tpl file
+  # ./$ is used to pass the current context without this global varibale will be blank
+{{ include "mychart.version" . | indent 4 }}  # self understanding 
 data:
   myvalue: "Sample Config Map"
   costCode: {{ .Values.costCode }}
   Zone: {{ quote .Values.infra.zone }}
   Region: {{ quote .Values.infra.region }}
   ProjectCode: {{ upper .Values.projectCode }}
+  pipleine: {{ .Values.projectCode | upper | quote }}
+  now: {{ now | date "2016-12-01" | quote }}   # structure
+  contact: {{ .Values.contact | default "2348-234-234" | quote}}
+  {{- if eq .Values.infra.region "us-e" }}
+  ha: true
+  {{- else }}
+  ha: false 
+  {{- end }}
+  {{- $relname := .Release.Name -}}  # defining variable now this will be available throughout the file, within scope also
+  {{- with .Values.tags}}  # scope is created within this scope tage values are avaliable builtin objects are not available
+  Machine Type: {{ .machine | default "NA" | quote }}  # machine is directly available
+  Rack ID: {{ .rack | quote }}
+  Storage Type: {{ .drive | upper | quote }}
+  Video Card: {{ .vcard | quote }}
+  release: {{ $relname }}  # using varibale inside scope
+  {{- end }}
+  orgdomain: {{ .Values.global.orgdomain }}
+  LangUsed: |-
+     {{- range .Values.LangUsed }}
+     - {{ . | title | quote }}
+     {{- end }}
+  # varibale using indexed
+  LangUsedIndexed: |- 
+   {{- range $index, $topping := .Values.LangUsed }}
+   - {{ $index }} : {{ $topping }}
+   {{- end }} 
+{{ include "mychart.version" . | indent 2 }}

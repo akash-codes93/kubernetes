@@ -1,0 +1,25 @@
+apiVersion: v1
+entries:
+  repotest:
+  - apiVersion: v2
+    appVersion: 1.17.0
+    created: "2022-08-14T07:01:07.366724596Z"
+    description: Showing usage of chart museum version 0.1.1
+    digest: d78f9f505f723f03efd3fe296d2e93ff965cf88180445cb37aed4d8a02c58eaf
+    name: repotest
+    type: application
+    urls:
+    - charts/repotest-0.1.1.tgz
+    version: 0.1.1
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2022-08-14T06:32:25.422322981Z"
+    description: Showing usage of chart museum
+    digest: 58b8f5f0a640e3474a539a250e6d53ca8f2e4653ac2d1ff4ea455e2176463401
+    name: repotest
+    type: application
+    urls:
+    - charts/repotest-0.1.0.tgz
+    version: 0.1.0
+generated: "2022-08-14T07:01:07Z"
+serverInfo: {}

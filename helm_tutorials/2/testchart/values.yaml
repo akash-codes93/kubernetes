@@ -2,4 +2,16 @@ costCode: CC8890
 projectCode: aazzssyp
 infra:
   zone: a,b,c
-  region: us-e
+  region: us-e1
+tags:
+  machine: fontdrive
+  rack: 4c
+  drive: ssd
+  vcard: 8g
+LangUsed:
+    - Python
+    - Ruby
+    - Java
+    - Scala
+global:
+  orgdomain: com.muthall
