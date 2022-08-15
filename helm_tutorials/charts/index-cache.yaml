@@ -21,5 +21,26 @@ entries:
     urls:
     - charts/repotest-0.1.0.tgz
     version: 0.1.0
-generated: "2022-08-14T07:01:07Z"
+  upgrade-rlbk:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2022-08-14T13:45:29.784267685Z"
+    description: A Helm chart for upgrade and rollback details -- replica increased
+    digest: cc78185ed7a4ed071a3ea5286c7f3fbf909996061f71aef46d661840283a0345
+    name: upgrade-rlbk
+    type: application
+    urls:
+    - charts/upgrade-rlbk-0.2.0.tgz
+    version: 0.2.0
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2022-08-14T13:27:25.848690059Z"
+    description: A Helm chart for upgrade and rollback details
+    digest: 4b588dc1d5dfd5d89f64cf8657041a245ac901f1e973637dbd3f95cdc7067f9a
+    name: upgrade-rlbk
+    type: application
+    urls:
+    - charts/upgrade-rlbk-0.1.0.tgz
+    version: 0.1.0
+generated: "2022-08-14T13:45:30Z"
 serverInfo: {}

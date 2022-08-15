@@ -5,9 +5,14 @@
 # install chart
 - helm install chartname ./mychart
 
+# install chart from repo
+-  helm install install-upgrade-rbkl mychartmuseumrepo/upgrade-rlbk
 
 # uninstall helm chart
-- helm uninstall chartname
+- helm uninstall chartname [same as helm delete]
+
+# helm lint [to verify if the charts are ok]
+ - helm lint hooktest/
 
 
 # list all the charts
@@ -75,8 +80,39 @@ NOTES.txt will pe printed at the end of chart release.
 # update the repo chart list
 - helm repo update
 
-# to genrate the index file
+# to genrate the index file [use when using git as helm repo] 
 - helm repo index .
 
+# add github as chart repo
+helm repo add --username <> --password <> <repo_name> '<url>'
+Eg.
+helm repo add --username <> --password <> git_helm_repo 'https://raw.githubusercontent.com/akash-codes93/kubernetes/master/helm_tutorials/helm_git_repo/'
+
+# upgrade the deployment
+- helm upgrade <deployment_name> <location_of_chart>
+- helm upgrade install-upgrade-rbkl mychartmuseumrepo/upgrade-rlbk
+[will only apply delta]
 
 
+# to find history of the deployments
+- helm install <deployment_name>
+
+# rollback
+- helm rollback <deployment_name> 1
+
+# adding dependencies
+dependencies:
+  - name: mariadb
+    version: 11.x.x
+    repository: https://charts.bitnami.com/bitnami
+
+# building dependencies
+- helm dependency build ./dependencytest
+
+
+# less weightage will be executed first
+
+
+# get notes of a deployment
+- helm get notes hooktestjob
+- helm get values hooktestjob
